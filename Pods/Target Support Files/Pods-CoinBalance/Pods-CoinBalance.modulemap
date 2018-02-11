@@ -1,0 +1,6 @@
+framework module Pods_CoinBalance {
+  umbrella header "Pods-CoinBalance-umbrella.h"
+
+  export *
+  module * { export * }
+}

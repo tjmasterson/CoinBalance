@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Coin" representedClassName=".Coin" syncable="YES" codeGenerationType="category">
+        <attribute name="availableSupply" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="coinID" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="marketCapUSD" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="maxSupply" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="percentChange1Hr" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="percentChange7D" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="percentChange24Hr" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="priceBTC" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="priceUSD" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rank" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="symbol" attributeType="String" syncable="YES"/>
+        <attribute name="totalSupply" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="volumeLast24Hr" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="coinprofile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinProfile" inverseName="coin" inverseEntity="CoinProfile" syncable="YES"/>
+    </entity>
+    <entity name="CoinProfile" representedClassName=".CoinProfile" syncable="YES" codeGenerationType="category">
+        <relationship name="coin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coin" inverseName="coinprofile" inverseEntity="Coin" syncable="YES"/>
+        <relationship name="portfolio" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Portfolio" inverseName="coinprofile" inverseEntity="Portfolio" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="coinprofile" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <entity name="Portfolio" representedClassName=".Portfolio" syncable="YES" codeGenerationType="category">
+        <relationship name="coinprofile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinProfile" inverseName="portfolio" inverseEntity="CoinProfile" syncable="YES"/>
+    </entity>
+    <entity name="Transaction" representedClassName=".Transaction" syncable="YES" codeGenerationType="category">
+        <attribute name="coinPriceInUSD" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="dateOfTransaction" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="numberOfCoins" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeOfTransaction" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="coinprofile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinProfile" inverseName="transactions" inverseEntity="CoinProfile" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Coin" positionX="88" positionY="-229" width="128" height="283"/>
+        <element name="CoinProfile" positionX="396" positionY="-54" width="128" height="88"/>
+        <element name="Portfolio" positionX="394" positionY="-216" width="128" height="58"/>
+        <element name="Transaction" positionX="630" positionY="27" width="128" height="118"/>
+    </elements>
+</model>
