@@ -17,6 +17,7 @@
 		A1A9485C2030F0C600B3311D /* CoinProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */; };
 		A1A9485E2030F8C400B3311D /* CoinProfileSubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485D2030F8C400B3311D /* CoinProfileSubTableViewController.swift */; };
 		A1A948602030FDA600B3311D /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485F2030FDA600B3311D /* TransactionTableViewController.swift */; };
+		A1C621732031AD1A003BDAA7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C621722031AD1A003BDAA7 /* TransactionTableViewCell.swift */; };
 		A1E8E1612023359E0000141D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8E1602023359E0000141D /* AppDelegate.swift */; };
 		A1E8E1662023359E0000141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E8E1642023359E0000141D /* Main.storyboard */; };
 		A1E8E1692023359E0000141D /* CoinBalance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E8E1672023359E0000141D /* CoinBalance.xcdatamodeld */; };
@@ -42,6 +43,7 @@
 		A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProfileViewController.swift; sourceTree = "<group>"; };
 		A1A9485D2030F8C400B3311D /* CoinProfileSubTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProfileSubTableViewController.swift; sourceTree = "<group>"; };
 		A1A9485F2030FDA600B3311D /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
+		A1C621722031AD1A003BDAA7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		A1E8E15D2023359E0000141D /* CoinBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E8E1602023359E0000141D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1E8E1652023359E0000141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A121B0DA2026555200B93EBF /* CoinPriceTableViewCell.swift */,
+				A1C621722031AD1A003BDAA7 /* TransactionTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				A1A948562030C33600B3311D /* Portfolio.swift in Sources */,
 				A1E8E1692023359E0000141D /* CoinBalance.xcdatamodeld in Sources */,
+				A1C621732031AD1A003BDAA7 /* TransactionTableViewCell.swift in Sources */,
 				A121B0D8202652F000B93EBF /* FetchedResultsTableViewController.swift in Sources */,
 				A1E8E17C2023367C0000141D /* Request.swift in Sources */,
 				A121B0D62026365700B93EBF /* Transaction.swift in Sources */,

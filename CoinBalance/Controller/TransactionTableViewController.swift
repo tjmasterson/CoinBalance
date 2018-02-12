@@ -10,86 +10,100 @@ import UIKit
 
 class TransactionTableViewController: UITableViewController {
 
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "TextFieldDidUpdate"), object: nil, queue: nil, using: shouldPresentSaveButton(_:))
+//        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "SaveTransaction"), object: nil, queue: nil, using: saveTransaction(_:))
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "TextFieldDidUpdate"), object: nil)
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return TransactionCell.count()
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let transactionCell = TransactionCell(rawValue: indexPath.item) else {
+            return UITableViewCell()
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
+        
+        cell.cellType = transactionCell
+        cell.indexPath = indexPath.item
 
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // let addTransactionCell = AddTransactionCell(rawValue: indexPath.item)!
+        let cell = tableView.cellForRow(at: indexPath)  as! TransactionTableViewCell
+        cell.valueTextField?.becomeFirstResponder()
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    private func shouldPresentSaveButton(_ notification: Notification) -> Void  {
+        let numberOfTableViewRows = tableView.numberOfRows(inSection: 0)
+        if numberOfTableViewRows > 0 {
+            for row in 0..<numberOfTableViewRows {
+                let indexPath = IndexPath(row: row, section: 0)
+                let cell = tableView.cellForRow(at: indexPath) as! TransactionTableViewCell
+                if cell.valueTextField?.hasText == false {
+                    return
+                }
+            }
+        }
+    
+        presentSaveButton(notification.userInfo as! [String: Int])
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    private func presentSaveButton(_ userInfo: [String: Int]) {
+        if let indexOfFirstResponder = userInfo["indexPath"] {
+            let indexPath = IndexPath(row: indexOfFirstResponder, section: 0)
+            let cell = tableView.cellForRow(at: indexPath) as! TransactionTableViewCell
+            cell.addToolbarInputAccessoryView()
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    private func saveTransaction(_ notification: Notification) -> Void {
+//        if let context = container?.viewContext {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "MM dd, yyyy"
+//            let transaction = Transaction(context: context)
+//            for row in 0..<numberOfTableViewRows {
+//                let indexPath = IndexPath(row: row, section: 0)
+//                let cell = tableView.cellForRow(at: indexPath) as! AddTransactionTableViewCell
+//                let type = cell.cellType!
+//                switch (type) {
+//                case .boughtAtPrice:
+//                    transaction.boughtAtPrice = Double((cell.valueTextField?.text)!)!
+//                case .currencyAmount:
+//                    transaction.currencyAmount = Double((cell.valueTextField?.text)!)!
+//                case .date:
+//                    transaction.date = dateFormatter.date(from:(cell.valueTextField?.text)!)!
+//                case .dollarsSpent:
+//                    transaction.dollarsSpent = Double((cell.valueTextField?.text)!)!
+//                }
+//            }
+//
+//            account?.addToTransactions(transaction)
+//            do {
+//                try context.save()
+//            } catch {
+//                print(error)
+//            }
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
 
 }
