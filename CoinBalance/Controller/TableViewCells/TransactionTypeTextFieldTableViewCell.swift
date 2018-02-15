@@ -20,8 +20,9 @@ class TransactionTextFieldTableViewCell: UITableViewCell, FormConformity {
     }
     
     func updateUI() {
+        textField?.delegate = self
         label.text = formItem?.label
-        formItem?.addToolbarInputAccessoryView(textField, notifyWith: "SaveTransaction")
+        formItem?.addToolbarInputAccessoryView(textField, saveNotifier: "SaveTransaction")
         self.textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
     }
     

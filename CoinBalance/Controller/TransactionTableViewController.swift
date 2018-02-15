@@ -19,7 +19,7 @@ class TransactionTableViewController: UITableViewController {
 
     var transaction: Transaction?
     
-    fileprivate var form = Form()
+    fileprivate var form = TransactionForm()
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -27,47 +27,27 @@ class TransactionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "SaveTransaction"), object: nil, queue: nil, using: saveTransaction(_:))
-        
-        self.form = Form()
-//        self.title = self.form.title
-//        self.prepareSubViews()
+        self.hideKeyboardWhenTappedAround()
+        self.form = TransactionForm()
         self.tableView.reloadData()
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "SaveTransaction"),
+                                               object: nil,
+                                               queue: nil,
+                                               using: saveTransaction(_:))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "SaveTransaction"), object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: Notification.Name(rawValue: "SaveTransaction"),
+                                                  object: nil)
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return TransactionCell.count()
         return self.form.formItems.count
     }
-    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let transactionCell = TransactionCell(rawValue: indexPath.item) else {
-//            return UITableViewCell()
-//        }
-//
-//
-//        switch transactionCell {
-//        case .coinPriceInUSD, .numberOfCoins:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCellNumber", for: indexPath) as! TransactionTableViewCellNumber
-//        case .dateOfTransaction:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCellDate", for: indexPath) as! TransactionTableViewCellDate
-//
-//        case .timeOfTransaction:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCellTime", for: indexPath) as! TransactionTableViewCellTime
-//        }
-//
-//        cell.cellType = transactionCell
-//        cell.indexPath = indexPath.item
-//
-//        return cell
-//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = self.form.formItems[indexPath.row]
@@ -87,21 +67,18 @@ class TransactionTableViewController: UITableViewController {
     }
 
 
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let transactionCell = AddTransactionCell(rawValue: indexPath.item)!
-//        let cell = tableView.cellForRow(at: indexPath)
-//
-//        switch transactionCell {
-//        case .coinPriceInUSD, .numberOfCoins:
-//            cell as! TransactionTableViewCellNumber
-//        case .dateOfTransaction:
-//            cell as! TransactionTableViewCellDate
-//        case .timeOfTransaction:
-//            cell as! TransactionTableViewCellTime
-//        }
-//
-//        cell.valueTextField?.becomeFirstResponder()
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cellType = self.form.formItems[indexPath.row].uiProperties.cellType {
+            switch cellType {
+            case .textFieldWithLabel:
+                let cell = tableView.cellForRow(at: indexPath) as! TransactionTextFieldTableViewCell
+                cell.textField?.becomeFirstResponder()
+            case .dateTypeTextFieldWithLabel:
+                let cell = tableView.cellForRow(at: indexPath) as! TransactionDateTypeTextFieldTableViewCell
+                cell.textField?.becomeFirstResponder()
+            }
+        }
+    }
     
 //    private func saveTransaction(_ notification: Notification) -> Void {
 //        if let context = context {

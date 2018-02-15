@@ -28,10 +28,11 @@ class TransactionDateTypeTextFieldTableViewCell: UITableViewCell, FormConformity
         label?.text = formItem!.label
         
         let datePickerView: UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.datePickerMode = (formItem?.uiProperties.datePickerMode)!
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControlEvents.valueChanged)
         textField?.inputView = datePickerView
         
+        formItem?.addToolbarInputAccessoryView(textField, saveNotifier: "SaveTransaction")
         textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
     }
     

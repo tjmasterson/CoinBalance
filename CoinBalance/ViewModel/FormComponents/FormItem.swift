@@ -11,9 +11,10 @@ import UIKit
 struct FormItemUIProperties {
     var tintColor = UIColor.red
     var keyboardType = UIKeyboardType.default
-    var cellType: AnyObject?
+    var cellType: TransactionFormItemCellType?
     var timeStyle: DateFormatter.Style?
     var dateStyle: DateFormatter.Style?
+    var datePickerMode: UIDatePickerMode?
 }
 
 class FormItem: FormValidable {
@@ -26,6 +27,8 @@ class FormItem: FormValidable {
     
     var isMandatory = true
     var isValid = true // FormValidable
+    
+    var saveNotifier = ""
     
     var uiProperties = FormItemUIProperties()
     
@@ -47,10 +50,11 @@ class FormItem: FormValidable {
         }
     }
     
-    func addToolbarInputAccessoryView(_ textField: UITextField?, notifyWith: String) {
+    func addToolbarInputAccessoryView(_ textField: UITextField?, saveNotifier: String) {
+        self.saveNotifier = saveNotifier
         let toolbar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveButtonClicked(sender:)))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveButtonClicked))
         
         toolbar.sizeToFit()
         toolbar.setItems([flexibleSpace, saveButton, flexibleSpace], animated: false)
@@ -60,9 +64,8 @@ class FormItem: FormValidable {
         textField?.reloadInputViews()
     }
     
-    @objc func saveButtonClicked(sender: AnyObject) {
-        print(sender)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: ""), object: nil)
+    @objc func saveButtonClicked() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: self.saveNotifier), object: nil)
     }
     
 
