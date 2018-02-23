@@ -80,29 +80,37 @@ class TransactionTableViewController: UITableViewController {
         }
     }
     
-//    private func saveTransaction(_ notification: Notification) -> Void {
-//        if let context = context {
-//            //            let dateFormatter = DateFormatter()
-//            //            dateFormatter.dateFormat = "MM dd, yyyy"
-//            if let transaction = transaction {
-//                
-//            } else {
-//                let transaction = Transaction(context: context)
-//            }
-//            
-//            let transaction = Transaction(context: context)
-//            
-//            do {
-//                try context.save()
-//            } catch {
-//                print(error)
-//            }
-//            
-//            dismiss(animated: true, completion: nil)
-//        }
-//    }
-
     private func saveTransaction(_ notification: Notification) -> Void {
+        let (valid, error) = self.form.isValid()
+        if valid, let context = context {
+            
+            let formItems = self.form.formItems
+            var fieldNamesWithValues = [String:String]()
+            for item in formItems {
+                fieldNamesWithValues[item.name] = item.value ?? ""
+            }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            
+            let transaction = Transaction(context: context)
+            transaction.coinPriceInUSD = Double(fieldNamesWithValues["coinPriceInUSD"]!)!
+            transaction.numberOfCoins = Double(fieldNamesWithValues["numberOfCoins"]!)!
+            transaction.dateOfTransaction = dateFormatter.date(from: fieldNamesWithValues["dateOfTransaction"]!)!
+            if let timeOfTransaction = fieldNamesWithValues["timeOfTransaction"] {
+                transaction.timeOfTransaction = dateFormatter.date(from: timeOfTransaction)!
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+//
+//            dismiss(animated: true, completion: nil)
+        }
+    }
+
+//    private func saveTransaction(_ notification: Notification) -> Void {
 //        if let context = context {
 //            let dateFormatter = DateFormatter()
 //            dateFormatter.dateFormat = "MM dd, yyyy"
@@ -131,6 +139,6 @@ class TransactionTableViewController: UITableViewController {
 //            }
 //            dismiss(animated: true, completion: nil)
 //        }
-    }
+//    }
 
 }

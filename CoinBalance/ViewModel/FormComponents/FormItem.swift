@@ -29,6 +29,7 @@ class FormItem: FormValidable {
     var isValid = true // FormValidable
     
     var saveNotifier = ""
+    var name = ""
     
     var uiProperties = FormItemUIProperties()
     
@@ -50,8 +51,7 @@ class FormItem: FormValidable {
         }
     }
     
-    func addToolbarInputAccessoryView(_ textField: UITextField?, saveNotifier: String) {
-        self.saveNotifier = saveNotifier
+    func addToolbarInputAccessoryView(_ textField: UITextField?) {
         let toolbar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         let saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(self.saveButtonClicked))
@@ -65,6 +65,7 @@ class FormItem: FormValidable {
     }
     
     @objc func saveButtonClicked() {
+    
         NotificationCenter.default.post(name: Notification.Name(rawValue: self.saveNotifier), object: nil)
     }
     

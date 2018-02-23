@@ -28,6 +28,8 @@ class TransactionForm: Form {
         
         // Number of Coins
         let numberOfCoins = FormItem(placeholder: "Tap to Edit", label: "Total Coins")
+        numberOfCoins.saveNotifier = "SaveTransaction"
+        numberOfCoins.name = "numberOfCoins"
         numberOfCoins.uiProperties.cellType = TransactionFormItemCellType.textFieldWithLabel
         numberOfCoins.value = self.numberOfCoins
         numberOfCoins.uiProperties.keyboardType = .numberPad
@@ -38,6 +40,8 @@ class TransactionForm: Form {
         
         // Coin Price in USD
         let coinPriceInUSD = FormItem(placeholder: "Tap to Edit", label: "Price in USD")
+        coinPriceInUSD.saveNotifier = "SaveTransaction"
+        coinPriceInUSD.name = "coinPriceInUSD"
         coinPriceInUSD.uiProperties.cellType = TransactionFormItemCellType.textFieldWithLabel
         coinPriceInUSD.value = self.coinPriceInUSD
         coinPriceInUSD.uiProperties.keyboardType = .numberPad
@@ -49,6 +53,8 @@ class TransactionForm: Form {
         
         // Date Of Transaction
         let dateOfTransaction = FormItem(placeholder: "Tap to Edit", label: "Date")
+        dateOfTransaction.saveNotifier = "SaveTransaction"
+        dateOfTransaction.name = "dateOfTransaction"
         dateOfTransaction.uiProperties.cellType = TransactionFormItemCellType.dateTypeTextFieldWithLabel
         dateOfTransaction.uiProperties.dateStyle = DateFormatter.Style.short
         dateOfTransaction.uiProperties.timeStyle = DateFormatter.Style.none
@@ -61,6 +67,8 @@ class TransactionForm: Form {
         
         // Time Of Transaction
         let timeOfTransaction = FormItem(placeholder: "Tap to Edit", label: "Time")
+        timeOfTransaction.saveNotifier = "SaveTransaction"
+        timeOfTransaction.name = "timeOfTransaction"
         timeOfTransaction.uiProperties.cellType = TransactionFormItemCellType.dateTypeTextFieldWithLabel
         timeOfTransaction.uiProperties.dateStyle = DateFormatter.Style.none
         timeOfTransaction.uiProperties.timeStyle = DateFormatter.Style.short

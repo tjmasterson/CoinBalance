@@ -30,13 +30,13 @@
         <attribute name="coinPriceInUSD" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dateOfTransaction" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="numberOfCoins" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="timeOfTransaction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeOfTransaction" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="coinprofile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoinProfile" inverseName="transactions" inverseEntity="CoinProfile" syncable="YES"/>
     </entity>
     <elements>
         <element name="Coin" positionX="88" positionY="-229" width="128" height="283"/>
         <element name="CoinProfile" positionX="396" positionY="-54" width="128" height="88"/>
         <element name="Portfolio" positionX="394" positionY="-216" width="128" height="58"/>
-        <element name="Transaction" positionX="630" positionY="27" width="128" height="118"/>
+        <element name="Transaction" positionX="630" positionY="27" width="128" height="120"/>
     </elements>
 </model>

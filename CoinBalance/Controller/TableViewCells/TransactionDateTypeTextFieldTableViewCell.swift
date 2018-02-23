@@ -18,10 +18,7 @@ class TransactionDateTypeTextFieldTableViewCell: UITableViewCell, FormConformity
             updateUI()
         }
     }
-    
-    @objc func textFieldDidChanged(_ textField: UITextField) {
-        self.formItem?.valueCompletion?(textField.text)
-    }
+
     
     func updateUI() {
         textField?.delegate = self
@@ -32,15 +29,16 @@ class TransactionDateTypeTextFieldTableViewCell: UITableViewCell, FormConformity
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControlEvents.valueChanged)
         textField?.inputView = datePickerView
         
-        formItem?.addToolbarInputAccessoryView(textField, saveNotifier: "SaveTransaction")
-        textField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
+        formItem?.addToolbarInputAccessoryView(textField)
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = (formItem?.uiProperties.dateStyle)!
         dateFormatter.timeStyle = (formItem?.uiProperties.timeStyle)!
-        textField?.text = dateFormatter.string(from: sender.date)
+        let dateString = dateFormatter.string(from: sender.date)
+        textField?.text = dateString
+        self.formItem?.valueCompletion?(String(describing: sender.date))
     }
     
 }

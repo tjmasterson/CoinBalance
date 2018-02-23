@@ -253,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionDateTypeTextFieldTableViewCell" rowHeight="74" id="rTk-hq-dGV" customClass="TransactionDateTypeTextFieldTableViewCell" customModule="CoinBalance" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionDateTypeTextFieldTableViewCell" rowHeight="74" id="rTk-hq-dGV" customClass="TransactionDateTypeTextFieldTableViewCell" customModule="CoinBalance" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="74"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rTk-hq-dGV" id="aXe-IG-ByP">
@@ -291,7 +291,7 @@
                                     <outlet property="textField" destination="TzT-zr-1gD" id="61d-IR-881"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTextFieldTableViewCell" rowHeight="70" id="kvP-Cw-Mnq" customClass="TransactionTextFieldTableViewCell" customModule="CoinBalance" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionTextFieldTableViewCell" rowHeight="70" id="kvP-Cw-Mnq" customClass="TransactionTextFieldTableViewCell" customModule="CoinBalance" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="129.5" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kvP-Cw-Mnq" id="E0Q-fG-fYO">
