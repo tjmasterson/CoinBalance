@@ -81,7 +81,7 @@ class TransactionTableViewController: UITableViewController {
     }
     
     private func saveTransaction(_ notification: Notification) -> Void {
-        let (valid, error) = self.form.isValid()
+        let (valid, _) = self.form.isValid()
         if valid, let context = context {
             
             let formItems = self.form.formItems

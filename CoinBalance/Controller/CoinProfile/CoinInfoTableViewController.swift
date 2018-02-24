@@ -1,18 +1,17 @@
 //
-//  CoinProfileSubTableViewController.swift
+//  CoinInfoTableViewController.swift
 //  CoinBalance
 //
-//  Created by Taylor Masterson on 2/11/18.
+//  Created by Taylor Masterson on 2/24/18.
 //  Copyright © 2018 Taylor Masterson. All rights reserved.
 //
 
 import UIKit
 
-class CoinProfileSubTableViewController: UITableViewController {
+class CoinInfoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,11 +19,17 @@ class CoinProfileSubTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("Summary View Controller Will Appear")
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        print("Summary View Controller Will Disappear")
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

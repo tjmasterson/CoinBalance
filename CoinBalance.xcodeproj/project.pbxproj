@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A11118C62041BA3300EEB459 /* CoinInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11118C52041BA3300EEB459 /* CoinInfoTableViewController.swift */; };
 		A121B0D42026364900B93EBF /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121B0D32026364900B93EBF /* Coin.swift */; };
 		A121B0D62026365700B93EBF /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121B0D52026365700B93EBF /* Transaction.swift */; };
 		A121B0D8202652F000B93EBF /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121B0D7202652F000B93EBF /* FetchedResultsTableViewController.swift */; };
@@ -22,7 +23,7 @@
 		A1A948542030C31300B3311D /* CoinProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A948532030C31300B3311D /* CoinProfile.swift */; };
 		A1A948562030C33600B3311D /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A948552030C33600B3311D /* Portfolio.swift */; };
 		A1A9485C2030F0C600B3311D /* CoinProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */; };
-		A1A9485E2030F8C400B3311D /* CoinProfileSubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485D2030F8C400B3311D /* CoinProfileSubTableViewController.swift */; };
+		A1A9485E2030F8C400B3311D /* TransactionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485D2030F8C400B3311D /* TransactionsTableViewController.swift */; };
 		A1A948602030FDA600B3311D /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A9485F2030FDA600B3311D /* TransactionTableViewController.swift */; };
 		A1E8E1612023359E0000141D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8E1602023359E0000141D /* AppDelegate.swift */; };
 		A1E8E1662023359E0000141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E8E1642023359E0000141D /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		455235422BCE07E70E4D46E3 /* Pods-CoinBalance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinBalance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoinBalance/Pods-CoinBalance.debug.xcconfig"; sourceTree = "<group>"; };
 		86473C6B6B0BBBC4C6C5DB90 /* Pods-CoinBalance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoinBalance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoinBalance/Pods-CoinBalance.release.xcconfig"; sourceTree = "<group>"; };
+		A11118C52041BA3300EEB459 /* CoinInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoTableViewController.swift; sourceTree = "<group>"; };
 		A121B0D32026364900B93EBF /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		A121B0D52026365700B93EBF /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A121B0D7202652F000B93EBF /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		A1A948552030C33600B3311D /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		A1A948572030C4E600B3311D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProfileViewController.swift; sourceTree = "<group>"; };
-		A1A9485D2030F8C400B3311D /* CoinProfileSubTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinProfileSubTableViewController.swift; sourceTree = "<group>"; };
+		A1A9485D2030F8C400B3311D /* TransactionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewController.swift; sourceTree = "<group>"; };
 		A1A9485F2030FDA600B3311D /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		A1E8E15D2023359E0000141D /* CoinBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1E8E1602023359E0000141D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,16 @@
 				BA8A306872617C64778A5DA5 /* Pods_CoinBalance.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A11118C42041B7B000EEB459 /* CoinProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */,
+				A1A9485D2030F8C400B3311D /* TransactionsTableViewController.swift */,
+				A11118C52041BA3300EEB459 /* CoinInfoTableViewController.swift */,
+			);
+			path = CoinProfile;
 			sourceTree = "<group>";
 		};
 		A121B0D92026553500B93EBF /* TableViewCells */ = {
@@ -183,11 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				A121B0D92026553500B93EBF /* TableViewCells */,
+				A11118C42041B7B000EEB459 /* CoinProfile */,
 				A16952672035C48000A4B076 /* ViewController.swift */,
 				A1E8E17F202608430000141D /* CoinPricesTableViewController.swift */,
 				A15E29402030BE3E00D67211 /* PortfolioTableViewController.swift */,
-				A1A9485B2030F0C600B3311D /* CoinProfileViewController.swift */,
-				A1A9485D2030F8C400B3311D /* CoinProfileSubTableViewController.swift */,
 				A1A9485F2030FDA600B3311D /* TransactionTableViewController.swift */,
 			);
 			path = Controller;
@@ -357,6 +368,7 @@
 				A121B0D8202652F000B93EBF /* FetchedResultsTableViewController.swift in Sources */,
 				A16952682035C48000A4B076 /* ViewController.swift in Sources */,
 				A169525A203315B100A4B076 /* Form.swift in Sources */,
+				A11118C62041BA3300EEB459 /* CoinInfoTableViewController.swift in Sources */,
 				A1E8E17C2023367C0000141D /* Request.swift in Sources */,
 				A169525E2033173700A4B076 /* FormProtocol.swift in Sources */,
 				A121B0D62026365700B93EBF /* Transaction.swift in Sources */,
@@ -366,7 +378,7 @@
 				A1E8E1612023359E0000141D /* AppDelegate.swift in Sources */,
 				A1695264203465EE00A4B076 /* TransactionFrom.swift in Sources */,
 				A1A9485C2030F0C600B3311D /* CoinProfileViewController.swift in Sources */,
-				A1A9485E2030F8C400B3311D /* CoinProfileSubTableViewController.swift in Sources */,
+				A1A9485E2030F8C400B3311D /* TransactionsTableViewController.swift in Sources */,
 				A169526620346BE500A4B076 /* TransactionDateTypeTextFieldTableViewCell.swift in Sources */,
 				A121B0DB2026555200B93EBF /* CoinPriceTableViewCell.swift in Sources */,
 				A15E29412030BE3E00D67211 /* PortfolioTableViewController.swift in Sources */,
