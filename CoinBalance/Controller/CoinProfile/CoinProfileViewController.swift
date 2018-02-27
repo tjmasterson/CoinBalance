@@ -11,6 +11,7 @@ import Charts
 
 class CoinProfileViewController: UIViewController {
     
+    var coin: Coin?
     weak var containerSubView: UIViewController?
     
     private lazy var transactionsViewController: TransactionsTableViewController = {
@@ -32,6 +33,9 @@ class CoinProfileViewController: UIViewController {
         
         // Instantiate View Controller
         var viewController = storyboard.instantiateViewController(withIdentifier: "CoinInfoTableViewController") as! CoinInfoTableViewController
+        
+        // Init Coin on Child View Controller
+        viewController.coin = coin
         
         // Add View Controller as Child View Controller
         self.add(subViewController: viewController)
@@ -61,8 +65,8 @@ class CoinProfileViewController: UIViewController {
         containerView.addSubview(subViewController.view)
         
         // Configure Child View
-        subViewController.view.frame = view.bounds
-        subViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        subViewController.view.frame = view.bounds
+//        subViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Notify Child View Controller
         subViewController.didMove(toParentViewController: self)

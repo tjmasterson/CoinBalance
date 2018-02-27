@@ -9,7 +9,7 @@
 import UIKit
 
 class CoinPriceTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
