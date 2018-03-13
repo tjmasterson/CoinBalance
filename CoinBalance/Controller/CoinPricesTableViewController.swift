@@ -124,6 +124,7 @@ class CoinPricesTableViewController: FetchedResultsTableViewController {
                 let cellIndex = tableView.indexPathForSelectedRow!
                 let cell = tableView.cellForRow(at: cellIndex) as! CoinPriceTableViewCell
                 viewController.coin = cell.coin
+                viewController.context = context
             }
         }
     }

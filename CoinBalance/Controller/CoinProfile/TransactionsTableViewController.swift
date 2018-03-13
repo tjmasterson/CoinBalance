@@ -26,14 +26,10 @@ class TransactionsTableViewController: FetchedResultsTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("Transactions View Controller Will Appear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        print("Transactions View Controller Will Disappear")
     }
     
     private func setupTableView() {

@@ -17,6 +17,7 @@ class TransactionTableViewController: UITableViewController {
     
     var context: NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
 
+    var coinProfile: CoinProfile?
     var transaction: Transaction?
     
     fileprivate var form = TransactionForm()
@@ -88,6 +89,7 @@ class TransactionTableViewController: UITableViewController {
             var fieldNamesWithValues = [String:String]()
             for item in formItems {
                 fieldNamesWithValues[item.name] = item.value ?? ""
+                print(item.name, item.value)
             }
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -99,7 +101,7 @@ class TransactionTableViewController: UITableViewController {
             if let timeOfTransaction = fieldNamesWithValues["timeOfTransaction"] {
                 transaction.timeOfTransaction = dateFormatter.date(from: timeOfTransaction)!
             }
-            
+            coinProfile?.addToTransactions(transaction)
             do {
                 try context.save()
             } catch {

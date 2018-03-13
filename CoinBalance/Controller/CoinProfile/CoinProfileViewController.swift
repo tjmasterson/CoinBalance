@@ -7,12 +7,35 @@
 //
 
 import UIKit
+import CoreData
 import Charts
 
 class CoinProfileViewController: UIViewController {
     
     var coin: Coin?
     weak var containerSubView: UIViewController?
+    
+    var context: NSManagedObjectContext? {
+        didSet {
+            findOrCreateCoinProfile(in: context!)
+        }
+    }
+    
+    private func findOrCreateCoinProfile(in context: NSManagedObjectContext) {
+        if let coin = self.coin {
+            do {
+                _ = try CoinProfile.findOrCreateCoinProfile(for: coin, in: context)
+            } catch {
+                print(error)
+            }
+            
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     private lazy var transactionsViewController: TransactionsTableViewController = {
         // Load Storyboard
@@ -50,10 +73,25 @@ class CoinProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSubView()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                          target: self,
+                                                          action: #selector(self.addTransactionButtonPressed(_:)))
+        
     }
     
     @IBAction func tableSegmentedControlPressed(_ sender: UISegmentedControl) {
         updateSubView()
+    }
+    
+    @objc func addTransactionButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let rootViewController = storyboard.instantiateViewController(withIdentifier: "TransactionRootViewController") as! UINavigationController
+        let viewController = rootViewController.viewControllers[0] as! TransactionTableViewController
+        viewController.coinProfile = coin?.coinprofile
+        
+        
+        
+        self.present(rootViewController, animated: true, completion: nil)
     }
     
     
@@ -65,8 +103,8 @@ class CoinProfileViewController: UIViewController {
         containerView.addSubview(subViewController.view)
         
         // Configure Child View
-//        subViewController.view.frame = view.bounds
-//        subViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        subViewController.view.frame = containerView.bounds
+        subViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Notify Child View Controller
         subViewController.didMove(toParentViewController: self)
